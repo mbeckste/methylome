@@ -5,7 +5,7 @@
 
 // process for mapping of paired end reads using Bismark
 process bismark {
-   label 'highmem_large'
+   label 'highmemLarge'
    container "chrishah/bismark:latest"
    publishDir params.outdir, mode: 'copy'
    shell '/bin/bash', '-euo', 'pipefail'
@@ -37,7 +37,7 @@ process bismark {
 }
 
 process summary_report {
-   label 'medium'
+   label 'large'
    container "chrishah/bismark:latest"
    publishDir params.outdir + "/" + params.run_name, mode: 'copy'
    shell '/bin/bash', '-euo', 'pipefail'
