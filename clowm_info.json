@@ -1,0 +1,21 @@
+{
+  "inputParameters": [
+    "indir"
+  ],
+  "outputParameters": [
+    "outdir"
+  ],
+  "exampleParameters": {
+    "run_name": "workflow_tryout",
+    "summary_report_title": "My example report",
+    "threads": 4,
+    "min_coverage": 5,
+    "indir": "s3://methylome-analysis/exampledata"
+  },
+  "dois": [
+    "10.1093/bioinformatics/btr167"
+  ],
+  "resourceParameters": [
+    "bismark_index_dir"
+  ]
+}
