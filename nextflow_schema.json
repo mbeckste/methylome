@@ -32,20 +32,26 @@
                     "default": "test",
                     "help_text": "Used as result directory name and to name global report files. Should not be an empty string",
                     "fa_icon": "fas fa-address-card"
-                },
-                "bismark_index_dir": {
-                    "type": "string",
-                    "description": "path to resource",
-                    "help_text": "Bismark index directory of reference genome. ",
-                    "format": "directory-path"
                 }
             },
             "required": [
                 "indir",
                 "outdir",
-                "run_name",
-                "bismark_index_dir"
+                "run_name"
             ]
+        },
+        "notification": {
+            "title": "Notification",
+            "type": "object",
+            "description": "",
+            "default": "",
+            "properties": {
+                "email": {
+                    "type": "string",
+                    "description": "Set this parameter to your e-mail address to get a summary e-mail with details of the run sent to you when the workflow exits.",
+                    "fa_icon": "fas fa-envelope"
+                }
+            }
         },
         "bismark_bisulfite_alignment": {
             "title": "Bismark bisulfite alignment",
@@ -64,29 +70,18 @@
                     "type": "integer",
                     "description": "Number of used CPU cores",
                     "default": 8,
-                    "fa_icon": "fas fa-microchip",
-                    "minimum": 1,
-                    "maximum": 8
+                    "fa_icon": "fas fa-microchip"
                 },
                 "min_coverage": {
                     "type": "integer",
                     "description": "minimal number of mapped reads (coverage) for a CpG motive necessary for methylation value calling",
                     "default": 5,
-                    "fa_icon": "fas fa-chart-line",
-                    "minimum": 1
-                }
-            }
-        },
-        "notification": {
-            "title": "Notification",
-            "type": "object",
-            "description": "",
-            "default": "",
-            "properties": {
-                "email": {
+                    "fa_icon": "fas fa-chart-line"
+                },
+                "bismark_index_dir": {
                     "type": "string",
-                    "description": "Set this parameter to your e-mail address to get a summary e-mail with details of the run sent to you when the workflow exits.",
-                    "fa_icon": "fas fa-envelope"
+                    "description": "path to resource",
+                    "hidden": true
                 }
             }
         }
@@ -96,10 +91,10 @@
             "$ref": "#/definitions/input_output_parameters"
         },
         {
-            "$ref": "#/definitions/bismark_bisulfite_alignment"
+            "$ref": "#/definitions/notification"
         },
         {
-            "$ref": "#/definitions/notification"
+            "$ref": "#/definitions/bismark_bisulfite_alignment"
         }
     ]
 }
