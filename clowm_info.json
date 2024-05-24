@@ -10,7 +10,7 @@
     "summary_report_title": "My example report",
     "threads": 4,
     "min_coverage": 5,
-    "indir": "s3://methylome-analysis/exampledata"
+    "indir": "s3://workflow-exampledata/bismark-methylome-analysis/example1/fastq"
   },
   "dois": [
     "10.1093/bioinformatics/btr167"
