@@ -1,0 +1,111 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "https://raw.githubusercontent.com/YOUR_PIPELINE/master/nextflow_schema.json",
+    "title": "Nextflow pipeline parameters",
+    "description": "This pipeline uses Nextflow and processes some kind of data. The JSON Schema was built using the nf-core pipeline schema builder.",
+    "type": "object",
+    "definitions": {
+        "input_output_parameters": {
+            "title": "Input/ Output parameters",
+            "type": "object",
+            "description": "Parameters to define the input and output",
+            "default": "",
+            "help_text": "S3 path to a directory/folder that contains bisulfite treated paired-end reads in FastQ format",
+            "properties": {
+                "indir": {
+                    "type": "string",
+                    "description": "Path to an input directory from which paired-end FastQ files are read",
+                    "format": "directory-path",
+                    "fa_icon": "fas fa-folder-open",
+                    "help_text": "Filenames must match the following pattern *_{1,2}.fastq"
+                },
+                "outdir": {
+                    "type": "string",
+                    "description": "Path to an output directory where the results are written",
+                    "help_text": "This should be a path to an S3 bucket/folder where the results of the workflow execution are written",
+                    "format": "directory-path",
+                    "fa_icon": "fas fa-folder-open"
+                },
+                "run_name": {
+                    "type": "string",
+                    "description": "Name of the analysis. Used as directory and file name in the output",
+                    "default": "test",
+                    "help_text": "Used as result directory name and to name global report files. Should not be an empty string",
+                    "fa_icon": "fas fa-address-card"
+                },
+                "bismark_index_dir": {
+                    "type": "string",
+                    "description": "path to resource",
+                    "help_text": "Bismark index directory of reference genome. ",
+                    "format": "directory-path"
+                }
+            },
+            "required": [
+                "indir",
+                "outdir",
+                "run_name",
+                "bismark_index_dir"
+            ]
+        },
+        "bismark_bisulfite_alignment": {
+            "title": "Bismark bisulfite alignment",
+            "type": "object",
+            "description": "",
+            "default": "",
+            "help_text": "Parameters relevant for alignment of bisulfite treated reads using Bismark",
+            "properties": {
+                "summary_report_title": {
+                    "type": "string",
+                    "description": "Title for the Bismark summary report",
+                    "default": "My report",
+                    "fa_icon": "fas fa-align-center"
+                },
+                "threads": {
+                    "type": "integer",
+                    "description": "Number of used CPU cores",
+                    "default": 8,
+                    "fa_icon": "fas fa-microchip",
+                    "minimum": 1,
+                    "maximum": 8
+                },
+                "min_coverage": {
+                    "type": "integer",
+                    "description": "minimal number of mapped reads (coverage) for a CpG motive necessary for methylation value calling",
+                    "default": 5,
+                    "fa_icon": "fas fa-chart-line",
+                    "minimum": 1
+                }
+            }
+        },
+        "notification": {
+            "title": "Notification",
+            "type": "object",
+            "description": "",
+            "default": "",
+            "properties": {
+                "email": {
+                    "type": "string",
+                    "description": "Set this parameter to your e-mail address to get a summary e-mail with details of the run sent to you when the workflow exits.",
+                    "fa_icon": "fas fa-envelope"
+                },
+                "mailfrom": {
+                    "type": "string",
+                    "hidden": true,
+                    "fa_icon": "fas fa-envelope",
+                    "description": "sender adress"
+                }
+            }
+        }
+    },
+    "allOf": [
+        {
+            "$ref": "#/definitions/input_output_parameters"
+        },
+        {
+            "$ref": "#/definitions/bismark_bisulfite_alignment"
+        },
+        {
+            "$ref": "#/definitions/notification"
+        }
+    ]
+}
