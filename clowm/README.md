@@ -17,6 +17,10 @@ Generation of per sample Bismark processing report (`bismark2report`) containing
 ### 5. Summary report generation
 Aggregation of per sample reports into comprehensive summary report (`bismark2summary`)
 
+## Getting started
+Example data with appropriate parametrization for an easy try-out of the workflow is available by clicking on the `Try it out` button on the parameter form page.
+
+
 ## Citation
 This workflow automates the main steps necessary for methylome analysis by using the Bismark package. If you use this workflow please cite:
 
